@@ -1,0 +1,327 @@
+# Software Requirements Specification (SRS)
+
+## Project Title
+
+AI Code CLI – Open‑Source Terminal‑Based Coding Assistant (Claude/Gemini‑like)
+
+---
+
+## 1. Introduction
+
+### 1.1 Purpose
+
+This document defines the complete **Software Requirements Specification (SRS)** for **AI Code CLI**, a terminal‑based AI coding assistant inspired by **Claude Code CLI** and **Gemini CLI**, but built entirely using **JavaScript/TypeScript** and **free, open‑source local LLMs**.
+
+The SRS is intended for:
+
+* Developers building or contributing to the project
+* Open‑source users and maintainers
+* Academic or portfolio evaluation
+
+---
+
+### 1.2 Scope
+
+AI Code CLI is a **cross‑platform CLI tool** that:
+
+* Runs fully **offline** using local LLMs
+* Assists developers with **code generation, file creation, refactoring, and command execution**
+* Provides an **interactive terminal UI** similar to Claude and Gemini CLIs
+* Is distributed as a **global npm package**
+
+No paid APIs or cloud services are required.
+
+---
+
+### 1.3 Definitions & Acronyms
+
+| Term   | Meaning                                         |
+| ------ | ----------------------------------------------- |
+| LLM    | Large Language Model                            |
+| CLI    | Command Line Interface                          |
+| SRS    | Software Requirements Specification             |
+| Agent  | AI system capable of planning + executing tasks |
+| Ollama | Local LLM runtime                               |
+
+---
+
+## 2. Overall Description
+
+### 2.1 Product Perspective
+
+AI Code CLI is a **local AI agent** operating inside the terminal. It follows a **Plan → Act → Verify** loop similar to Claude Code.
+
+High‑level flow:
+
+```
+User → CLI → AI Agent → Tools (FS / Shell) → Terminal UI
+```
+
+---
+
+### 2.2 Target Users
+
+* JavaScript / TypeScript developers
+* Students with limited access to paid AI tools
+* Open‑source contributors
+* Developers preferring terminal workflows
+
+---
+
+### 2.3 Operating Environment
+
+| Component   | Requirement                        |
+| ----------- | ---------------------------------- |
+| OS          | Windows / macOS / Linux            |
+| Runtime     | Node.js 18+                        |
+| LLM Runtime | Ollama                             |
+| Memory      | Minimum 8GB RAM (16GB recommended) |
+
+---
+
+## 3. System Architecture
+
+### 3.1 High‑Level Architecture
+
+```
+┌──────────────┐
+│   Terminal   │
+└──────┬───────┘
+       │
+┌──────▼───────┐
+│   CLI UI     │  ← colors, panels, streaming text
+└──────┬───────┘
+       │
+┌──────▼───────┐
+│ AI Agent Core│  ← planning & decision making
+└──────┬───────┘
+       │
+┌──────▼──────────────┐
+│ Local LLM (Ollama)  │
+└──────┬──────────────┘
+       │
+┌──────▼───────┐
+│ Tool Layer   │ (FS / Shell)
+└──────────────┘
+```
+
+---
+
+### 3.2 Technology Stack
+
+| Layer     | Technology                             |
+| --------- | -------------------------------------- |
+| Language  | TypeScript                             |
+| CLI       | commander                              |
+| UI        | chalk, ora, readline                   |
+| LLM       | Ollama (qwen2.5‑coder, deepseek‑coder) |
+| Shell     | execa                                  |
+| Packaging | npm                                    |
+
+---
+
+## 4. Functional Requirements
+
+### 4.1 CLI Interaction
+
+**FR‑1:** System shall accept natural language tasks via CLI arguments or interactive mode.
+
+**FR‑2:** System shall display streamed AI responses similar to Claude/Gemini.
+
+**FR‑3:** System shall show clear UI sections:
+
+* User prompt
+* AI reasoning
+* Actions performed
+
+---
+
+### 4.2 AI Agent Behavior
+
+**FR‑4:** Agent shall break tasks into sequential steps.
+
+**FR‑5:** Agent shall only act via predefined tools:
+
+* read_file
+* write_file
+* run_command
+* done
+
+**FR‑6:** Agent shall loop until task completion.
+
+---
+
+### 4.3 File System Operations
+
+**FR‑7:** System shall create, modify, and read files within the project directory.
+
+**FR‑8:** System shall preview file changes before writing (future enhancement).
+
+---
+
+### 4.4 Command Execution
+
+**FR‑9:** System shall request user confirmation before executing any shell command.
+
+**FR‑10:** System shall block destructive commands (rm -rf, sudo, etc.).
+
+---
+
+## 5. Non‑Functional Requirements
+
+### 5.1 Performance
+
+* Average response latency: dependent on local model
+* Must support streaming output
+
+### 5.2 Security
+
+* No external network calls except local Ollama
+* Command allow‑listing
+* Project‑directory sandboxing
+
+### 5.3 Usability
+
+* Claude‑like conversational UI
+* Clear prompts and confirmations
+* Minimal configuration
+
+---
+
+## 6. Terminal UI Design (Claude / Gemini‑like)
+
+### UI Characteristics
+
+* Colored role prefixes (User / AI / Tool)
+* Animated spinner while AI thinks
+* Streaming text output
+* Command preview panel
+
+Example:
+
+```
+❯ ai-code "add login page"
+
+🧠 AI is thinking...
+
+🤖 Plan:
+- Create login page
+- Add form
+
+⚠️ Command to run:
+npm install react-hook-form
+Proceed? (y/n)
+```
+
+---
+
+## 7. Ollama Setup (Initial Requirement)
+
+### Step 1: Install Ollama
+
+```bash
+curl -fsSL https://ollama.com/install.sh | sh
+```
+
+### Step 2: Verify Installation
+
+```bash
+ollama --version
+```
+
+### Step 3: Download Coding Model
+
+```bash
+ollama pull qwen2.5-coder:7b
+```
+
+### Step 4: Test Model
+
+```bash
+ollama run qwen2.5-coder:7b
+```
+
+---
+
+## 8. Step‑by‑Step Development Guide (Ordered)
+
+### Step 1: Initialize Project
+
+* Create Node.js + TypeScript project
+* Setup tsconfig
+
+### Step 2: Create CLI Entry
+
+* Setup commander
+* Parse user input
+
+### Step 3: Connect to Ollama
+
+* Implement HTTP client
+* Validate model availability
+
+### Step 4: Design System Prompt
+
+* Define JSON‑only actions
+* Restrict behavior
+
+### Step 5: Build Agent Loop
+
+* Parse AI output
+* Execute tools
+
+### Step 6: Implement Tools
+
+* File system tool
+* Shell execution tool
+
+### Step 7: Build Terminal UI
+
+* Streaming text
+* Spinners
+* Color formatting
+
+### Step 8: Package for npm
+
+* Add bin entry
+* Compile TypeScript
+* Publish
+
+Each step depends strictly on the previous step.
+
+---
+
+## 9. Research & Inspiration
+
+Based on analysis of:
+
+* Claude Code CLI architecture
+* Gemini CLI behavior
+* Open‑source tools: Aider, Cline, OpenCode
+
+Common patterns observed:
+
+* Agent‑based planning
+* Tool abstraction
+* Strict safety rules
+* Terminal‑first UX
+
+---
+
+## 10. Future Enhancements
+
+* Diff preview & undo
+* Multi‑model support
+* Session memory
+* Plugin system
+* VS Code bridge
+
+---
+
+## 11. Conclusion
+
+AI Code CLI provides a **cost‑free, privacy‑friendly, and extensible alternative** to commercial AI coding CLIs. Using Ollama and open‑source models ensures accessibility for developers worldwide.
+
+---
+
+**End of SRS**

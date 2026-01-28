@@ -1,0 +1,80 @@
+Key Features
+🧠 Code Understanding & Reasoning
+
+Understands large codebases (multi-file, multi-language)
+
+Strong context awareness across folders and modules
+
+Explains complex code in human-friendly language
+
+🛠 Code Generation
+
+Generate code snippets, functions, or full files
+
+Supports multiple languages (JS, TS, Python, Go, Rust, etc.)
+
+Follows existing project patterns and conventions
+
+🔄 Refactoring & Optimization
+
+Refactor messy or legacy code
+
+Improve performance and readability
+
+Convert code (e.g., JS → TS, callbacks → async/await)
+
+🐞 Debugging Assistance
+
+Identify bugs and logical issues
+
+Explain runtime errors and stack traces
+
+Suggest fixes with reasoning
+
+📁 Repository-Level Operations
+
+Read and reason over entire repositories
+
+Help with architecture decisions
+
+Summarize projects or specific folders
+
+🧪 Testing Support
+
+Generate unit and integration tests
+
+Improve test coverage
+
+Explain failing tests
+
+🧾 Documentation
+
+Generate README files
+
+Write inline code comments
+
+Explain APIs and system design
+
+💬 Interactive CLI Experience
+
+Chat-style interaction in terminal
+
+Follow-up questions supported
+
+Iterative improvements without restarting context
+
+🔐 Local & Secure
+
+Runs from terminal
+
+No IDE lock-in
+
+Useful for devs who prefer CLI workflows
+
+⚡ Productivity Boost
+
+Faster than copy-pasting into a browser
+
+Works well with git workflows
+
+Great for quick experiments and exploration
