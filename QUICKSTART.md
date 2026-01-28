@@ -1,6 +1,6 @@
 # Quick Start Guide
 
-Get started with AI Code CLI in 5 minutes!
+Get started with Aban Code CLI in 5 minutes!
 
 ## Step 1: Install Ollama
 
@@ -36,7 +36,7 @@ curl http://localhost:11434/api/tags
 
 You should see a JSON response with your models.
 
-## Step 4: Install AI Code CLI
+## Step 4: Install Aban Code CLI
 
 From this project directory:
 
@@ -49,7 +49,7 @@ npm link
 ## Step 5: Run Your First Command
 
 ```bash
-ai-code "create a file called hello.txt with the content 'Hello, World!'"
+aban-code "create a file called hello.txt with the content 'Hello, World!'"
 ```
 
 You should see:
@@ -61,17 +61,17 @@ You should see:
 
 **Generate code:**
 ```bash
-ai-code "create a simple HTTP server in server.js using the built-in http module"
+aban-code "create a simple HTTP server in server.js using the built-in http module"
 ```
 
 **Read and modify:**
 ```bash
-ai-code "read package.json and show me the dependencies"
+aban-code "read package.json and show me the dependencies"
 ```
 
 **Install packages:**
 ```bash
-ai-code "install express and cors"
+aban-code "install express and cors"
 ```
 
 ## Troubleshooting
@@ -98,22 +98,22 @@ ai-code "install express and cors"
 
 1. **Create a React component:**
    ```bash
-   ai-code "create a React component for a todo list item"
+   aban-code "create a React component for a todo list item"
    ```
 
 2. **Add a npm script:**
    ```bash
-   ai-code "add a dev script to package.json that runs tsx watch"
+   aban-code "add a dev script to package.json that runs tsx watch"
    ```
 
 3. **Generate tests:**
    ```bash
-   ai-code "create a test file for the sandbox module"
+   aban-code "create a test file for the sandbox module"
    ```
 
 4. **Multi-step task:**
    ```bash
-   ai-code "create a simple Express API with GET and POST endpoints for todos"
+   aban-code "create a simple Express API with GET and POST endpoints for todos"
    ```
 
-Enjoy using AI Code CLI! 🚀
+Enjoy using Aban Code CLI! 🚀

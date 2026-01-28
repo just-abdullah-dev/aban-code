@@ -94,7 +94,7 @@ export function displayError(error: string): void {
  */
 export function displayWelcome(): void {
   console.log();
-  console.log('🤖 AI Code CLI');
+  console.log('🤖 Aban Code CLI');
   console.log(separator());
 }
 

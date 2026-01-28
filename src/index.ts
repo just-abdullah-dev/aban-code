@@ -20,7 +20,7 @@ import {
 const program = new Command();
 
 program
-  .name('ai-code')
+  .name('aban-code')
   .description('Terminal-based AI coding assistant using local LLMs via Ollama')
   .version('1.0.0');
 

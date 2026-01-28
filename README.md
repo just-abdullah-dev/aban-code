@@ -1,4 +1,4 @@
-# AI Code CLI
+# Aban Code CLI
 
 A terminal-based AI coding assistant that uses local LLMs via Ollama to help you with software development tasks.
 
@@ -22,14 +22,14 @@ A terminal-based AI coding assistant that uses local LLMs via Ollama to help you
 ### Option 1: Install Globally (Recommended)
 
 ```bash
-npm install -g ai-code-cli
+npm install -g aban-code
 ```
 
 ### Option 2: Install Locally
 
 ```bash
-npm install ai-code-cli
-npx ai-code "your task here"
+npm install aban-code
+npx aban-code "your task here"
 ```
 
 ### Option 3: Build from Source
@@ -72,40 +72,40 @@ npm link
 ### Basic Usage
 
 ```bash
-ai-code "create a hello world file"
+aban-code "create a hello world file"
 ```
 
 ### Examples
 
 **Create a file:**
 ```bash
-ai-code "create a file named hello.txt with the content 'Hello, World!'"
+aban-code "create a file named hello.txt with the content 'Hello, World!'"
 ```
 
 **Generate code:**
 ```bash
-ai-code "create a simple Express.js server in server.js"
+aban-code "create a simple Express.js server in server.js"
 ```
 
 **Read and modify:**
 ```bash
-ai-code "read package.json and add a new script called 'dev'"
+aban-code "read package.json and add a new script called 'dev'"
 ```
 
 **Run commands:**
 ```bash
-ai-code "install express using npm"
+aban-code "install express using npm"
 ```
 
 **Multi-step tasks:**
 ```bash
-ai-code "create a React component for a login form with email and password fields"
+aban-code "create a React component for a login form with email and password fields"
 ```
 
 ### CLI Options
 
 ```bash
-ai-code [options] <task>
+aban-code [options] <task>
 
 Options:
   -V, --version          Output version number
@@ -119,22 +119,22 @@ Options:
 
 **Use a different model:**
 ```bash
-ai-code -m deepseek-coder:6.7b "create a Python script"
+aban-code -m deepseek-coder:6.7b "create a Python script"
 ```
 
 **Enable debug mode:**
 ```bash
-ai-code -d "create a test file"
+aban-code -d "create a test file"
 ```
 
 **Custom Ollama URL:**
 ```bash
-ai-code --ollama-url http://192.168.1.100:11434 "your task"
+aban-code --ollama-url http://192.168.1.100:11434 "your task"
 ```
 
 ## How It Works
 
-AI Code CLI uses a ReAct (Reasoning and Acting) agent loop:
+Aban Code CLI uses a ReAct (Reasoning and Acting) agent loop:
 
 1. **User Input**: You provide a natural language task
 2. **AI Planning**: The LLM analyzes the task and plans actions
@@ -153,7 +153,7 @@ The AI has access to 4 tools:
 
 ## Security Features
 
-AI Code CLI includes multiple security layers:
+Aban Code CLI includes multiple security layers:
 
 ### Path Sandboxing
 - All file operations are restricted to the current project directory
@@ -195,7 +195,7 @@ export DEBUG=true
 
 ### Configuration File
 
-Create `.ai-code.json` in your project root (coming soon):
+Create `.aban-code.json` in your project root (coming soon):
 
 ```json
 {
@@ -265,7 +265,7 @@ ollama list
 
 3. **Enable debug mode** to see what's happening:
    ```bash
-   ai-code -d "your task"
+   aban-code -d "your task"
    ```
 
 ## Limitations
@@ -335,7 +335,7 @@ npm test
 ```bash
 npm run build
 npm link
-ai-code "test task"
+aban-code "test task"
 ```
 
 ## Contributing
@@ -368,4 +368,4 @@ For issues, questions, or suggestions:
 
 ---
 
-Made with ❤️ by the AI Code CLI team
+Made with ❤️ by the Aban Code CLI team

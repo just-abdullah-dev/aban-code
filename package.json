@@ -1,10 +1,10 @@
 {
-  "name": "ai-code-cli",
+  "name": "aban-code",
   "version": "1.0.0",
   "description": "Terminal-based AI coding assistant using local LLMs via Ollama",
   "main": "dist/index.js",
   "bin": {
-    "ai-code": "./dist/index.js"
+    "aban-code": "./dist/index.js"
   },
   "type": "module",
   "scripts": {
